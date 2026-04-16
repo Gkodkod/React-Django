@@ -1,9 +1,8 @@
 from django.urls import path
 
-from .views import main
+from .views import RoomView, GetRoom
 
 urlpatterns = [
-    ## multiple paths to the same view
-    path("", main),
-    path("home", main),
+    path("create-room", RoomView.as_view()),
+    path("get-rooms", GetRoom.as_view()),
 ]

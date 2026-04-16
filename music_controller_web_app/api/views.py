@@ -1,6 +1,16 @@
-from django.http import HttpResponse
+from rest_framework import generics
 
+from .models import Room
+from .serializers import RoomSerializer
 
 # Create your views here.
-def main(request):
-    return HttpResponse("<h1>Hello World</h1>")
+
+# API to create a room
+class RoomView(generics.CreateAPIView):
+    queryset = Room.objects.all()
+    serializer_class = RoomSerializer
+
+# API to get a room
+class GetRoom(generics.ListAPIView):
+    queryset = Room.objects.all()
+    serializer_class = RoomSerializer
